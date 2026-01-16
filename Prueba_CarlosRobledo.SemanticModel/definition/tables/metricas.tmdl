@@ -1,21 +1,93 @@
 table metricas
 	lineageTag: b3017546-a6bf-4f16-aaa2-bac20d7e832f
 
-	column metricas
-		dataType: string
-		lineageTag: 604eba9d-56d3-4b80-8a91-6a607c598783
-		summarizeBy: none
-		sourceColumn: metricas
+	measure 'Venta USD' = ```
+			
+			SUMX(
+			    'Ventas',
+			    VAR Tasa = LOOKUPVALUE(
+			        'Moneda'[TasaCambio], 
+			        'Moneda'[Fecha], 'Ventas'[FechaOrden], 
+			        'Moneda'[MonedaOrigen], 'Ventas'[CodigoMoneda], 
+			        'moneda'[MonedaDestino], "USD"
+			    )
+			    RETURN ('Ventas'[PrecioNeto] * 'Ventas'[Cantidad]) * Tasa
+			)
+			```
+		lineageTag: 50d77f0a-9d9f-42b1-b23b-fe9097e9d8be
 
-		annotation SummarizationSetBy = Automatic
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Costo USD' =
+			
+			SUMX(
+			    'Ventas',
+			    VAR Tasa = LOOKUPVALUE('Moneda'[TasaCambio], 'Moneda'[Fecha], 'Ventas'[FechaOrden], 'moneda'[MonedaDestino], 'Ventas'[CodigoMoneda], 'moneda'[MonedaDestino], "USD")
+			    RETURN ('Ventas'[CostoUnitario] * 'Ventas'[Cantidad]) * Tasa
+			)
+		lineageTag: 65bff96f-baf9-491b-bae5-d630159e2bab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Descuento USD' =
+			
+			SUMX(
+			    'Ventas',
+			    VAR Tasa = LOOKUPVALUE('Moneda'[TasaCambio], 'Moneda'[Fecha], 'Ventas'[FechaOrden], 'moneda'[MonedaOrigen], 'Ventas'[CodigoMoneda], 'moneda'[MonedaDestino], "USD")
+			    RETURN (('Ventas'[PrecioUnitario] - 'Ventas'[PrecioNeto]) * 'Ventas'[Cantidad]) * Tasa
+			)
+		lineageTag: 63b1617a-f71d-4bdb-b20b-2cc3a53cda03
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Margen USD' = [Venta USD] - [Costo USD]
+		lineageTag: 3cd162d3-67d6-4296-b72b-caedfa8246ff
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Cantidad = SUM('Ventas'[Cantidad])
+		lineageTag: 5f16c02f-fa79-4946-a818-f885423e708b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Kilogramos = SUMX('Ventas', 'Ventas'[Cantidad] * RELATED('producto'[PesoKilogramos]))
+		lineageTag: 0569cc85-a5e6-4714-8181-9da06df11c49
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ticket Promedio' = DIVIDE([Venta USD], DISTINCTCOUNT('Ventas'[OrderKey]))
+		lineageTag: 8ae540f4-759e-4120-93d2-dee7f90c6493
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precio Promedio USD' = DIVIDE([Venta USD], [Cantidad])
+		lineageTag: f66e32ee-71ee-4a57-8cef-c7397483d561
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precio Promedio por Kilogramo' = DIVIDE([Venta USD], [Kilogramos])
+		lineageTag: 7e4b9555-4762-4c9b-ac6c-e98681ce3ac7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Venta Promedio por Cliente' = DIVIDE([Venta USD], DISTINCTCOUNT('Ventas'[CustomerKey]))
+		lineageTag: 5d2d09ff-d25f-40a7-a363-876187e1c21b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Unidades Promedio por Ticket' = DIVIDE([Cantidad], DISTINCTCOUNT('Ventas'[OrderKey]))
+		lineageTag: 23576c93-a565-43cb-a866-0d7b8ff15e8b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition metricas = m
 		mode: import
 		source =
 				let
-				    Origen = ""
+				    Origen = "",
+				    #"Columnas quitadas" = Table.RemoveColumns(Origen,{"metricas"})
 				in
-				    Origen
+				    #"Columnas quitadas"
 
 	annotation PBI_NavigationStepName = Navegación
 
