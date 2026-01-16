@@ -1,0 +1,126 @@
+table producto
+	lineageTag: c280996d-a0c1-4713-b85a-b1a032c01fa5
+
+	column ProductKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 26abc187-4389-4c37-a932-cbde14250fa8
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoProducto
+		dataType: string
+		lineageTag: 34368429-bfe4-4fb2-a43a-ad33854143fa
+		summarizeBy: none
+		sourceColumn: CodigoProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreProducto
+		dataType: string
+		lineageTag: b3b84eb6-7c33-47b5-b598-b0c839f01382
+		summarizeBy: none
+		sourceColumn: NombreProducto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fabricante
+		dataType: string
+		lineageTag: 064b1697-41c0-4ed1-9479-0975d925619b
+		summarizeBy: none
+		sourceColumn: Fabricante
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marca
+		dataType: string
+		lineageTag: c19dd7fe-d5fc-4bb0-aab8-a814e6c4cd9c
+		summarizeBy: none
+		sourceColumn: Marca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: ee8a38d2-ff47-4973-9660-6e02f4a808f2
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubCategoria
+		dataType: string
+		lineageTag: 336a4449-3c2a-4eb4-b87d-fcdba0087815
+		summarizeBy: none
+		sourceColumn: SubCategoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria
+		dataType: string
+		lineageTag: d4301902-3d51-498b-a3e5-1652e24f988a
+		summarizeBy: none
+		sourceColumn: Categoria
+
+		annotation SummarizationSetBy = Automatic
+
+	column PesoOriginal
+		dataType: double
+		lineageTag: b7bac6c3-a967-4fe0-96f0-9ceb1e18a3cd
+		summarizeBy: none
+		sourceColumn: PesoOriginal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UnidadPesoOriginal
+		dataType: string
+		lineageTag: ce236d7c-68db-4ec5-b4d5-abbd62feda33
+		summarizeBy: none
+		sourceColumn: UnidadPesoOriginal
+
+		annotation SummarizationSetBy = Automatic
+
+	column PesoKilogramos
+		dataType: double
+		lineageTag: 9b4bccd8-ef79-43e4-9fdb-23538eaa3edd
+		summarizeBy: none
+		sourceColumn: PesoKilogramos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SubCategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dea94df-4e9e-42d6-a2f0-8d2c1c49b876
+		summarizeBy: none
+		sourceColumn: SubCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoryKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 55054e82-9f74-47af-8ad3-1728568b7d11
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition producto = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database(srvName, dbName, [Query="SELECT #(lf)    p.ProductKey,#(lf)    p.ProductCode AS CodigoProducto,#(lf)    p.ProductName AS NombreProducto,#(lf)    p.Manufacturer AS Fabricante,#(lf)    p.Brand AS Marca,#(lf)    p.Color,#(lf)    p.Weight AS PesoOriginal,#(lf)    p.WeightUnit AS UnidadPesoOriginal,#(lf)    CASE #(lf)        WHEN p.WeightUnit = 'ounces' THEN p.Weight * 0.0283495#(lf)        ELSE p.Weight#(lf)    END AS PesoKilogramos,#(lf)    p.SubCategoryKey,#(lf)    p.CategoryKey,#(lf)    sc.SubCategoryName AS SubCategoria,#(lf)    c.CategoryName AS Categoria#(lf)FROM [Data].Product p#(lf)LEFT JOIN [Data].SubCategory sc ON p.SubCategoryKey = sc.SubCategoryKey#(lf)LEFT JOIN [Data].Category c ON p.CategoryKey = c.CategoryKey;"])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

@@ -1,0 +1,48 @@
+table moneda
+	lineageTag: 42c3eee1-35cb-4816-a676-3ae9e4b1ed5a
+
+	column Fecha
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c3350aa6-d0a9-4a96-8341-f225b6a021ef
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonedaOrigen
+		dataType: string
+		lineageTag: 18a78269-3a17-4471-bc10-845354071f4e
+		summarizeBy: none
+		sourceColumn: MonedaOrigen
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonedaDestino
+		dataType: string
+		lineageTag: ef4dde78-1cb2-4bbd-bdf5-79b635e31f1b
+		summarizeBy: none
+		sourceColumn: MonedaDestino
+
+		annotation SummarizationSetBy = Automatic
+
+	column TasaCambio
+		dataType: double
+		lineageTag: 2c630fe1-f6d7-4268-b2d0-69aff2e6ab12
+		summarizeBy: sum
+		sourceColumn: TasaCambio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition moneda = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database(srvName, dbName, [Query="SELECT #(lf)    Date AS Fecha,#(lf)    FromCurrency AS MonedaOrigen,#(lf)    ToCurrency AS MonedaDestino,#(lf)    Exchange AS TasaCambio#(lf)FROM [Data].CurrencyExchange;"])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

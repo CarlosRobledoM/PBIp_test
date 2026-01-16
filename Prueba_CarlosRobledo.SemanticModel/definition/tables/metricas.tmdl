@@ -1,0 +1,23 @@
+table metricas
+	lineageTag: b3017546-a6bf-4f16-aaa2-bac20d7e832f
+
+	column metricas
+		dataType: string
+		lineageTag: 604eba9d-56d3-4b80-8a91-6a607c598783
+		summarizeBy: none
+		sourceColumn: metricas
+
+		annotation SummarizationSetBy = Automatic
+
+	partition metricas = m
+		mode: import
+		source =
+				let
+				    Origen = ""
+				in
+				    Origen
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

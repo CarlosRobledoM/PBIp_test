@@ -1,0 +1,89 @@
+table clientes
+	lineageTag: f5908cab-3deb-41c8-b52d-369966a1bab9
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 03e25e96-e27f-4e4f-95b8-4fe42eec85df
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: 37446923-49e1-4732-a82b-ffb67aca8e53
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Apellido
+		dataType: string
+		lineageTag: c3bd7750-b917-4241-8724-9de7017981f2
+		summarizeBy: none
+		sourceColumn: Apellido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: 13f6fc1b-fa4f-47ff-905c-83d466d48c18
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ocupacion
+		dataType: string
+		lineageTag: 93e4a338-4c61-4878-9846-74beba7d5c1d
+		summarizeBy: none
+		sourceColumn: Ocupacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ciudad
+		dataType: string
+		lineageTag: 79ccf46c-6c73-4cab-80e2-542f0e7036ed
+		summarizeBy: none
+		sourceColumn: Ciudad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Edad
+		dataType: int64
+		formatString: 0
+		lineageTag: d9663d73-f6fc-4b4b-9758-a4bc5742df72
+		summarizeBy: sum
+		sourceColumn: Edad
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaNacimiento
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 465d1bb8-8f9c-4577-86c7-282ca489d6de
+		summarizeBy: none
+		sourceColumn: FechaNacimiento
+
+		variation Variación
+			isDefault
+			relationship: b09a2cfb-4f9d-4eb6-bb13-ac3f4f172861
+			defaultHierarchy: LocalDateTable_207b0907-9818-4059-a3a8-70f83dfb6b65.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition clientes = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database(srvName, dbName, [Query="SELECT #(lf)    CustomerKey,#(lf)    GivenName AS Nombre,#(lf)    Surname AS Apellido,#(lf)    Gender AS Genero,#(lf)    Occupation AS Ocupacion,#(lf)    City AS Ciudad,#(lf)    Age AS Edad,#(lf)    Birthday AS FechaNacimiento#(lf)FROM [Data].Customer;"])
+				in
+				    Origen
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

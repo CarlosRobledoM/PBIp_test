@@ -1,0 +1,72 @@
+table tienda
+	lineageTag: 08cbad0f-3152-40f6-9a45-8fe7e9e4bf3f
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2684f7c2-4fcb-439d-90cb-09d04d7b7163
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CodigoTienda
+		dataType: int64
+		formatString: 0
+		lineageTag: 8962d31e-2d04-43ad-9664-3bfb93603b38
+		summarizeBy: none
+		sourceColumn: CodigoTienda
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreTienda
+		dataType: string
+		lineageTag: 5635034d-5300-4441-b6e4-224c563a7c0e
+		summarizeBy: none
+		sourceColumn: NombreTienda
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetrosCuadrados
+		dataType: int64
+		formatString: 0
+		lineageTag: 100f4568-a5dd-47c6-a146-9c643bb2d6c1
+		summarizeBy: none
+		sourceColumn: MetrosCuadrados
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoTienda
+		dataType: string
+		lineageTag: 88c83173-574e-4142-9bcb-d3279e06e7b4
+		summarizeBy: none
+		sourceColumn: EstadoTienda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: a695d3a5-e86a-44a2-8537-f3303490d4e5
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pais
+		dataType: string
+		lineageTag: 53592793-8dcb-4d4e-8e22-0a291c749ce5
+		summarizeBy: none
+		sourceColumn: Pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tienda = m
+		mode: import
+		source =
+				let
+				    Origen = Sql.Database(srvName, dbName, [Query="SELECT #(lf)    s.StoreKey,#(lf)    s.StoreCode AS CodigoTienda,#(lf)    s.Description AS NombreTienda,#(lf)    s.SquareMeters AS MetrosCuadrados,#(lf)    s.Status AS EstadoTienda,#(lf)    st.StateName AS Estado,#(lf)    co.CountryName AS Pais#(lf)FROM [Data].Store s#(lf)LEFT JOIN [Data].State st ON s.StateKey = st.StateKey#(lf)LEFT JOIN [Data].Country co ON st.CountryCode = co.CountryCode;"])
+				in
+				    Origen
+
+	annotation PBI_ResultType = Table
+

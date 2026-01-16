@@ -1,0 +1,14 @@
+expression dbName = "assesment" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 347f210a-089b-42d1-a51d-3d3fc2d10c2f
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression srvName = "assesment.cwb0siyssle1.us-east-1.rds.amazonaws.com" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 5dd8a713-562c-487c-9cc4-20a036906d28
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

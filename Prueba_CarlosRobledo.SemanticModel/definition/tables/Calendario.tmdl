@@ -1,0 +1,76 @@
+table Calendario
+	lineageTag: 41457ac3-3b1b-499c-b126-819474ac24ba
+
+	column Fecha
+		formatString: General Date
+		lineageTag: 71224049-a419-4359-a3f2-7bec8b7207e7
+		summarizeBy: none
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: f958928e-d040-4305-9d95-3c8e75021652
+			defaultHierarchy: LocalDateTable_594e5305-33a4-44ca-9e06-ec1fb410b77f.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		formatString: 0
+		lineageTag: 352b843f-d431-4c39-911b-068b19005e0d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: fe558739-9805-43ab-bc5d-e214d566582a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre
+		lineageTag: d6498861-0dc7-403a-9367-5f97c451d921
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trimestre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DíaSemana
+		lineageTag: 944bdf80-ba1f-4dbe-bd5e-491d85f5c931
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DíaSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNumero
+		formatString: 0
+		lineageTag: 156c3688-dc19-446f-a083-adbaf03dcbfc
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MesNumero]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = calculated
+		mode: import
+		source =
+				
+				VAR MinYear = YEAR(MIN('Ventas'[FechaOrden]))
+				VAR MaxYear = YEAR(MAX('Ventas'[FechaOrden]))
+				RETURN
+				ADDCOLUMNS (
+				    CALENDAR(DATE(MinYear, 1, 1), DATE(MaxYear, 12, 31)),
+				    "Año", YEAR([Date]),
+				    "MesNumero", MONTH([Date]),
+				    "Mes", FORMAT([Date], "MMMM"),
+				    "Trimestre", "T" & FORMAT([Date], "Q"),
+				    "DíaSemana", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = 29858f5fac7b4a5b8a744f787ef21a6b
+

@@ -1,0 +1,35 @@
+relationship b09a2cfb-4f9d-4eb6-bb13-ac3f4f172861
+	joinOnDateBehavior: datePartOnly
+	fromColumn: clientes.FechaNacimiento
+	toColumn: LocalDateTable_207b0907-9818-4059-a3a8-70f83dfb6b65.Date
+
+relationship 8329cfea-8f15-4baf-b75f-fe78a0e61e5b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ventas.FechaEntrega
+	toColumn: LocalDateTable_5b88893d-5099-4506-9fb5-800541a41df6.Date
+
+relationship AutoDetected_18bd3c11-3634-4681-896f-d9501b6da520
+	fromColumn: ventas.CustomerKey
+	toColumn: clientes.CustomerKey
+
+relationship AutoDetected_01c9879c-25e1-43f0-a5c0-5b7338643d13
+	fromColumn: ventas.ProductKey
+	toColumn: producto.ProductKey
+
+relationship AutoDetected_3f8803af-c0b5-40c2-b420-512c663984ca
+	fromColumn: ventas.StoreKey
+	toColumn: tienda.StoreKey
+
+relationship f958928e-d040-4305-9d95-3c8e75021652
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendario.Fecha
+	toColumn: LocalDateTable_594e5305-33a4-44ca-9e06-ec1fb410b77f.Date
+
+relationship 41a7dd2a-72bd-6dbd-bed7-e51c57962ec0
+	fromColumn: ventas.FechaOrden
+	toColumn: Calendario.Fecha
+
+relationship a2feecf1-bc08-96a5-ea45-b4a6fa40007d
+	fromColumn: moneda.Fecha
+	toColumn: Calendario.Fecha
+
