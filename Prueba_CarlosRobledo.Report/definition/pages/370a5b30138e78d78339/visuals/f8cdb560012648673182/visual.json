@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "f8cdb560012648673182",
+  "position": {
+    "x": 917,
+    "y": 53,
+    "z": 1,
+    "height": 667,
+    "width": 363,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendario"
+                    }
+                  },
+                  "Property": "Mes"
+                }
+              },
+              "queryRef": "Calendario.Mes",
+              "nativeQueryRef": "Mes",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD MTD"
+                    }
+                  },
+                  "Property": "Venta MTD AA"
+                }
+              },
+              "queryRef": "Venta USD MTD.Venta MTD AA",
+              "nativeQueryRef": "Venta MTD AA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD MTD"
+                    }
+                  },
+                  "Property": "Venta MTD"
+                }
+              },
+              "queryRef": "Venta USD MTD.Venta MTD",
+              "nativeQueryRef": "Venta MTD"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Venta USD MTD"
+                  }
+                },
+                "Property": "Venta MTD AA"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "55e884ba20ece8938ca0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD MTD"
+              }
+            },
+            "Property": "Venta MTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d0c36091cc02c0203493",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD MTD"
+              }
+            },
+            "Property": "Venta MTD AA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "cd89846b05a4c4100c0d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendario"
+              }
+            },
+            "Property": "Mes"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -80,6 +80,11 @@ table metricas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Representación descuento' = DIVIDE([Descuento USD], [Venta USD])
+		lineageTag: 805decc6-2f23-488a-9a1f-1804d29152db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column metricas
 		dataType: string
 		lineageTag: 9af043ec-b5e7-498d-b59d-d9238acd158c

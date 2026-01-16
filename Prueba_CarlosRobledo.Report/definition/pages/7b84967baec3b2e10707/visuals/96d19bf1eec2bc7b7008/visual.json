@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "96d19bf1eec2bc7b7008",
+  "position": {
+    "x": 640,
+    "y": 80,
+    "z": 1,
+    "height": 510.00000000000006,
+    "width": 640,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "producto"
+                    }
+                  },
+                  "Property": "Marca"
+                }
+              },
+              "queryRef": "producto.Marca",
+              "nativeQueryRef": "Marca",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Venta USD"
+                }
+              },
+              "queryRef": "metricas.Venta USD",
+              "nativeQueryRef": "Venta USD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Venta AA"
+                }
+              },
+              "queryRef": "Venta USD.Venta AA",
+              "nativeQueryRef": "Venta AA"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "metricas"
+                  }
+                },
+                "Property": "Venta USD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d24825db19a905bcb624",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Venta USD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "efbe0770104a52e18655",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Venta AA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "096a6ec01615db7d6b30",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "producto"
+              }
+            },
+            "Property": "Marca"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

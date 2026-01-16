@@ -1,0 +1,258 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "04ddb706e827b02deaa0",
+  "position": {
+    "x": 0,
+    "y": 52.857142857142861,
+    "z": 0,
+    "height": 667.14285714285722,
+    "width": 917.14285714285722,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "NombreTienda"
+                }
+              },
+              "queryRef": "tienda.NombreTienda",
+              "nativeQueryRef": "NombreTienda",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "Pais"
+                }
+              },
+              "queryRef": "tienda.Pais",
+              "nativeQueryRef": "Pais",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD MTD"
+                    }
+                  },
+                  "Property": "Venta MTD"
+                }
+              },
+              "queryRef": "Venta USD MTD.Venta MTD",
+              "nativeQueryRef": "Venta MTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD MTD"
+                    }
+                  },
+                  "Property": "Venta MTD AA"
+                }
+              },
+              "queryRef": "Venta USD MTD.Venta MTD AA",
+              "nativeQueryRef": "Venta MTD AA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD MTD"
+                    }
+                  },
+                  "Property": "Delta Venta MTD"
+                }
+              },
+              "queryRef": "Venta USD MTD.Delta Venta MTD",
+              "nativeQueryRef": "Delta Venta MTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD YTD"
+                    }
+                  },
+                  "Property": "Venta YTD"
+                }
+              },
+              "queryRef": "Venta USD YTD.Venta YTD",
+              "nativeQueryRef": "Venta YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD YTD"
+                    }
+                  },
+                  "Property": "Venta YTD AA"
+                }
+              },
+              "queryRef": "Venta USD YTD.Venta YTD AA",
+              "nativeQueryRef": "Venta YTD AA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD YTD"
+                    }
+                  },
+                  "Property": "Delta Venta YTD"
+                }
+              },
+              "queryRef": "Venta USD YTD.Delta Venta YTD",
+              "nativeQueryRef": "Delta Venta YTD"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9b953ab6adbb9b065353",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "Pais"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c50717651d20148e80aa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "NombreTienda"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d248ecff8c8775543009",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD MTD"
+              }
+            },
+            "Property": "Venta MTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e95d014052d039dd5ed4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD MTD"
+              }
+            },
+            "Property": "Venta MTD AA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "52aa3a042be36daaa06a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD MTD"
+              }
+            },
+            "Property": "Delta Venta MTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1d1b55128357d3004590",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD YTD"
+              }
+            },
+            "Property": "Venta YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d0df9ac232c71dd4563e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD YTD"
+              }
+            },
+            "Property": "Venta YTD AA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1b6b2b0e012e8a18493e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD YTD"
+              }
+            },
+            "Property": "Delta Venta YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6bc97fea3811c3bd7661",
+  "position": {
+    "x": 0,
+    "y": 442.55319148936172,
+    "z": 4,
+    "height": 277.20364741641339,
+    "width": 774.22492401215811,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "clientes"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "clientes.Nombre",
+              "nativeQueryRef": "Nombre",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Venta USD"
+                }
+              },
+              "queryRef": "metricas.Venta USD",
+              "nativeQueryRef": "Venta USD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Venta AA"
+                }
+              },
+              "queryRef": "Venta USD.Venta AA",
+              "nativeQueryRef": "Venta AA"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "metricas"
+                  }
+                },
+                "Property": "Venta USD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "db90423a46ccc0782990",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "clientes"
+              }
+            },
+            "Property": "Nombre"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "22633ed7837a00b60e7b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Venta AA"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f5b2dcb1e8bb217a942b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Venta USD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

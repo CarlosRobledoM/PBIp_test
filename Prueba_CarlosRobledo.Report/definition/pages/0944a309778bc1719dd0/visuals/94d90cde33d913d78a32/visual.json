@@ -1,0 +1,89 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "94d90cde33d913d78a32",
+  "position": {
+    "x": 774.22492401215811,
+    "y": 165.34954407294833,
+    "z": 5,
+    "height": 277.20364741641339,
+    "width": 387.11246200607906,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "treemap",
+    "query": {
+      "queryState": {
+        "Group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "producto"
+                    }
+                  },
+                  "Property": "Categoria"
+                }
+              },
+              "queryRef": "producto.Categoria",
+              "nativeQueryRef": "Categoria",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Venta USD"
+                }
+              },
+              "queryRef": "metricas.Venta USD",
+              "nativeQueryRef": "Venta USD"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f2a60ba1b1c909eb25a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "producto"
+              }
+            },
+            "Property": "Categoria"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fd090e14c9882d70aba6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Venta USD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

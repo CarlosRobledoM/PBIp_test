@@ -1,0 +1,331 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a134c9105a803a91499d",
+  "position": {
+    "x": 0,
+    "y": 68.571428571428569,
+    "z": 0,
+    "height": 260,
+    "width": 677.14285714285722,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "Pais"
+                }
+              },
+              "queryRef": "tienda.Pais",
+              "nativeQueryRef": "Pais",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              },
+              "queryRef": "tienda.Estado",
+              "nativeQueryRef": "Estado",
+              "active": false
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "NombreTienda"
+                }
+              },
+              "queryRef": "tienda.NombreTienda",
+              "nativeQueryRef": "NombreTienda",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Venta AA"
+                }
+              },
+              "queryRef": "Venta USD.Venta AA",
+              "nativeQueryRef": "Venta AA"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Venta USD"
+                }
+              },
+              "queryRef": "metricas.Venta USD",
+              "nativeQueryRef": "Venta USD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Var Venta"
+                }
+              },
+              "queryRef": "Venta USD.Var Venta",
+              "nativeQueryRef": "Var Venta"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Delta Venta"
+                }
+              },
+              "queryRef": "Venta USD.Delta Venta",
+              "nativeQueryRef": "Delta Venta"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Kilogramos"
+                }
+              },
+              "queryRef": "metricas.Kilogramos",
+              "nativeQueryRef": "Kilogramos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Venta USD"
+                  }
+                },
+                "Property": "Var Venta"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "tienda.Pais"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "Pais"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "tienda.Estado"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "Estado"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "tienda.NombreTienda"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1bff5ee21dce32ca4397",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "Pais"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ac54ae2b79d2942a0a93",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "NombreTienda"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "825c2f10d1957924a850",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "Estado"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9d552bd70351671c1840",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Venta USD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "77be4ded6854de819292",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Var Venta"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6738b44249be7aec0ea4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Delta Venta"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "da59fefed63d4d50cd30",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Kilogramos"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7a50e15410d42c0ecc1d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Venta AA"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

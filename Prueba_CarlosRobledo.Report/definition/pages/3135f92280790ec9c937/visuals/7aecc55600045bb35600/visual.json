@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "7aecc55600045bb35600",
+  "position": {
+    "x": 0,
+    "y": 48.571428571428577,
+    "z": 3,
+    "height": 227.14285714285717,
+    "width": 640,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "barChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "clientes"
+                    }
+                  },
+                  "Property": "Nombre"
+                }
+              },
+              "queryRef": "clientes.Nombre",
+              "nativeQueryRef": "Nombre",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Descuento USD"
+                }
+              },
+              "queryRef": "metricas.Descuento USD",
+              "nativeQueryRef": "Descuento USD"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "metricas"
+                  }
+                },
+                "Property": "Descuento USD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2921097f3640bc1558e9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Descuento USD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a0e3ec5e7770aeaa0a9a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "clientes"
+              }
+            },
+            "Property": "Nombre"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

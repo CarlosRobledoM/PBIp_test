@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2ecd163a0715e012a084",
+  "position": {
+    "x": 0,
+    "y": 165.34954407294833,
+    "z": 3,
+    "height": 277.20364741641339,
+    "width": 774.22492401215811,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "tienda"
+                    }
+                  },
+                  "Property": "NombreTienda"
+                }
+              },
+              "queryRef": "tienda.NombreTienda",
+              "nativeQueryRef": "NombreTienda",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "metricas"
+                    }
+                  },
+                  "Property": "Venta USD"
+                }
+              },
+              "queryRef": "metricas.Venta USD",
+              "nativeQueryRef": "Venta USD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Venta USD"
+                    }
+                  },
+                  "Property": "Venta AA"
+                }
+              },
+              "queryRef": "Venta USD.Venta AA",
+              "nativeQueryRef": "Venta AA"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "metricas"
+                  }
+                },
+                "Property": "Venta USD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8a0dd96fa0390391d22d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "tienda"
+              }
+            },
+            "Property": "NombreTienda"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "47fe027a91443cd59329",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "metricas"
+              }
+            },
+            "Property": "Venta USD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d3654922c2d348008368",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Venta USD"
+              }
+            },
+            "Property": "Venta AA"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
