@@ -80,14 +80,21 @@ table metricas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column metricas
+		dataType: string
+		lineageTag: 9af043ec-b5e7-498d-b59d-d9238acd158c
+		summarizeBy: none
+		sourceColumn: metricas
+
+		annotation SummarizationSetBy = Automatic
+
 	partition metricas = m
 		mode: import
 		source =
 				let
-				    Origen = "",
-				    #"Columnas quitadas" = Table.RemoveColumns(Origen,{"metricas"})
+				    Origen = ""
 				in
-				    #"Columnas quitadas"
+				    Origen
 
 	annotation PBI_NavigationStepName = Navegación
 

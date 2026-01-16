@@ -1,0 +1,46 @@
+table 'Venta USD YTD'
+	lineageTag: 484833e9-9fc0-4668-a159-22c6835424e7
+
+	measure 'Venta YTD' = TOTALYTD([Venta USD], 'Calendario'[Fecha])
+		lineageTag: 6703c12f-adde-4abd-ba77-dc402b027b0c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Venta YTD AA' = CALCULATE([Venta YTD], SAMEPERIODLASTYEAR('Calendario'[Fecha]))
+		lineageTag: a7485b1f-e7c1-4c1f-b646-5fd54fba8b2c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Var Venta YTD' = [Venta YTD] - [Venta YTD AA]
+		lineageTag: c169ae05-64f2-4fbd-9352-89bd54b41865
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta Venta YTD' = DIVIDE([Var Venta YTD], [Venta YTD AA])
+		lineageTag: e3a4f029-7a0a-416f-a5ba-8902a10b573b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Venta USD YTD'
+		dataType: string
+		lineageTag: 4688ff38-03f7-44ed-b48a-338ee24d74e1
+		summarizeBy: none
+		sourceColumn: Venta USD YTD
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Venta USD YTD' = m
+		mode: import
+		source =
+				let
+				    Origen = "",
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(Origen,{{"venta YTD", "Venta USD YTD"}})
+				in
+				    #"Columnas con nombre cambiado"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

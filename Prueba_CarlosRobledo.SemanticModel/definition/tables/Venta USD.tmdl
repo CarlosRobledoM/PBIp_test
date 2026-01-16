@@ -1,0 +1,40 @@
+table 'Venta USD'
+	lineageTag: 9c09589e-e421-4b50-a088-82271c27fef0
+
+	measure 'Venta AA' = CALCULATE([Venta USD], SAMEPERIODLASTYEAR('Calendario'[Fecha]))
+		lineageTag: f2724d16-1882-4d34-8fb7-8f1305cfba15
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Var Venta' = [Venta USD] - [Venta AA]
+		lineageTag: 3a1728a0-8c56-4482-979a-80b9f9b83bf1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta Venta' = DIVIDE([Var Venta], [Venta AA])
+		lineageTag: e3b61ddf-8ff1-4619-979f-aec955ee85de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column venta
+		dataType: string
+		lineageTag: 22f4b64e-1a88-4cf0-ae3e-9b7f509a32a1
+		summarizeBy: none
+		sourceColumn: venta
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Venta USD' = m
+		mode: import
+		source =
+				let
+				    Origen = ""
+				in
+				    Origen
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

@@ -1,0 +1,43 @@
+table 'Venta USD MTD'
+	lineageTag: 686839da-231f-4d96-afbc-341b456a5b2b
+
+	measure 'Venta MTD' = TOTALMTD([Venta USD], 'Calendario'[Fecha])
+		lineageTag: 63a6784b-9ea6-4424-b098-ca229c00ab73
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Venta MTD AA' = CALCULATE([Venta MTD], SAMEPERIODLASTYEAR('Calendario'[Fecha]))
+		lineageTag: e8d20987-f778-4671-9769-2c3a212f7d74
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Var Venta MTD' = [Venta MTD] - [Venta MTD AA]
+		lineageTag: f8abf169-c71e-4d47-bbb9-9a480705e428
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta Venta MTD' = DIVIDE([Var Venta MTD], [Venta MTD AA])
+		lineageTag: 18873bc1-5a05-4283-bb56-9b3518a6bcf4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Venta USD MTD'
+		dataType: string
+		lineageTag: 609cbe42-b47b-4fb4-b103-bc0e2f35a2b6
+		summarizeBy: none
+		sourceColumn: Venta USD MTD
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Venta USD MTD' = m
+		mode: import
+		source =
+				let
+				    Origen = ""
+				in
+				    Origen
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
